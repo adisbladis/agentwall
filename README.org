@@ -1,0 +1,14 @@
+* SSH agent "firewall"
+
+** Usage:
+#+begin_src bash
+nix-shell
+go build
+rm -f go.sock; go build; ./agentwall --backend $SSH_AUTH_SOCK
+#+end_src
+
+In another shell:
+#+begin_src bash
+export SSH_AUTH_SOCK=$(pwd)/go.sock
+ssh <server_ip>
+#+end_src
